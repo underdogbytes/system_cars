@@ -1,0 +1,12 @@
+create database dbCars;
+
+use dbCars;
+
+create table cars (
+	id int primary key,
+    model varchar(30),
+    color varchar(20),
+    plate varchar(7)
+);
+
+insert into cars (id, model, plate) values (1, 'Vrum vrum', 'EMO1234');
