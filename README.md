@@ -14,7 +14,7 @@ Ao navegar nestes dignissímos arquivos, confirmará que tenho domínio em:
 - Verifique se no arquivo vars.env o user/senha tá igual o que tu usa na tua máquina;
 - Rode os comandos do arquivo db-commands.txt;
 - Rode o comando `npm start`;
-- Rotas disponíveis estão no arquivo src/routes.js
+- Rotas disponíveis estão no arquivo src/routes
 
 # Atualizações
 <i>Últimas atualizações: 31/03/2026</i>
