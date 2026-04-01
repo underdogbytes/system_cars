@@ -25,7 +25,7 @@ Ao navegar nestes dignissímos arquivos, confirmará que tenho domínio em:
 
 # Tem que fazer (entre hoje e a volta e Cristo)
 
-- [ ] Melhorar padrão de rotas
+- [X] Melhorar padrão de rotas
 - [ ] Centralizar tratamento de erros
 - [ ] Validação de entrada
 - [ ] Arquivo default e fallback de configs
