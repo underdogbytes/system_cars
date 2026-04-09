@@ -1,5 +1,3 @@
-const db = require('../db');
-
 class CarModel {
   #id;
   #model;
