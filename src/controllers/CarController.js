@@ -37,13 +37,7 @@ module.exports = {
   createCar: async (req, res) => {
     try {
       let json = { error: '', result: {} }
-      
       let { id, model, plate, color } = req.body;
-      
-      if (!id || !model || !plate || !color) {
-        throw new Error("All fields are required.");
-      }
-
       let newCar = await CarService.createCar(id, model, plate, color);
 
       if (newCar) {

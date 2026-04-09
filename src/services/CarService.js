@@ -40,6 +40,12 @@ module.exports = {
 
   createCar: (id, model, plate, color) => {
     return new Promise((resolve, rejected) => {
+      try {
+        new CarModel(id, model, plate, color);
+      } catch (error) {
+        return rejected(error);
+      }
+
       db.query(
         'INSERT INTO cars (id, model, plate, color) VALUES (?, ?, ?, ?)',
         [id, model, plate, color],
