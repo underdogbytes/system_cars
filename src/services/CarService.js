@@ -46,7 +46,11 @@ module.exports = {
         [id, model, plate, color],
         (error, results) => {
           if (error) {
-            rejected(error);
+            if (error.code === 'ER_DUP_ENTRY') {
+              rejected(new Error('Já existe um veículo cadastrado com este ID.'));
+            } else {
+              rejected(error);
+            }
             return;
           }
           resolve(results);
