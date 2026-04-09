@@ -29,7 +29,6 @@ module.exports = {
       });
     });
   },
-  
   getByPlate: (plate) => {
     return new Promise((resolve, rejected) => {
       db.query(`SELECT * FROM cars WHERE plate = ?`, [plate], (error, results) => {
@@ -72,6 +71,18 @@ module.exports = {
         }
       }
 
+      // Necessário ID para atualizar:
+      if (updateFields.id === undefined) {
+        rejected(new Error('Informe o ID do carro a ser editado.'));
+        return;
+      }
+
+      // Se não tiver nada além do Id:
+      if (sqlParts.length === 1) {
+        rejected(new Error('Nenhum campo para atualizar.'));
+        return;
+      }
+
       params.push(id);
       let sql = `UPDATE cars SET ${sqlParts.join(', ')} WHERE id = ?`;
 
@@ -99,5 +110,5 @@ module.exports = {
         resolve(results);
       });
     });
-  } 
+  }
 };
