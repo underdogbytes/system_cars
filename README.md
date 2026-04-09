@@ -16,6 +16,35 @@ Ao navegar nestes dignissímos arquivos, confirmará que tenho domínio em:
 - Rode o comando `npm start`;
 - Rotas disponíveis estão no arquivo src/routes
 
+## Testes
+
+### Via cURL
+
+Obter todos os carros:
+```bash
+curl http://localhost:3000/api/cars
+```
+
+Obter um carro por placa:
+```bash
+curl http://localhost:3000/api/cars/plate/AAA-1234
+```
+
+Adicionar um carro:
+```bash
+curl -X POST http://localhost:3000/api/cars -d "id=2&model=UnoComEscadinha&plate=AAA-1234&color=Branco"
+```
+
+Editar um carro:
+```bash
+curl -X PUT http://localhost:3000/api/cars/2 -d "id=2&model=UnoComEscadinha&plate=AAA-1234&color=Preto"
+```
+
+Deletar um carro:
+```bash
+curl -X DELETE http://localhost:3000/api/cars/2
+```
+
 # Atualizações
 <i>Últimas atualizações: 31/03/2026</i>
 
