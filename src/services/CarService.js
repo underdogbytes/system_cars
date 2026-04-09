@@ -7,8 +7,13 @@ module.exports = {
     return new Promise((resolve, rejected) => {
       db.query('SELECT * FROM cars', (error, results) => {
         if (error) { rejected(error); return; }
-        const cars = results.map(row => new CarModel(row.id, row.model, row.plate, row.color));
-        resolve(cars);
+
+        try {
+          const cars = results.map(row => new CarModel(row.id, row.model, row.plate, row.color));
+          resolve(cars);
+        } catch (error) {
+          rejected(error);
+        }
       });
     });
   },
@@ -29,6 +34,7 @@ module.exports = {
       });
     });
   },
+
   getByPlate: (plate) => {
     return new Promise((resolve, rejected) => {
       db.query(`SELECT * FROM cars WHERE plate = ?`, [plate], (error, results) => {
@@ -64,42 +70,25 @@ module.exports = {
     });
   },
 
-  editCar: (id, model, plate, color) => {
+  editCar: async (id, model, plate, color) => {
+    const originalCar = await module.exports.getById(id);
+
+    if (!originalCar) {
+      throw new Error('Carro inexistente.');
+    }
+
+    let finalModel = model !== undefined ? model : originalCar.model;
+    let finalPlate = plate !== undefined ? plate : originalCar.plate;
+    let finalColor = color !== undefined ? color : originalCar.color;
+
+    new CarModel(id, finalModel, finalPlate, finalColor);
+
     return new Promise((resolve, rejected) => {
-      let updateFields = { id, model, plate, color };
-      let params = [];
-      let sqlParts = [];
-
-      for (let field in updateFields) {
-        if (updateFields[field] !== undefined) {
-          sqlParts.push(`${field} = ?`);
-          params.push(updateFields[field]);
-        }
-      }
-
-      // Necessário ID para atualizar:
-      if (updateFields.id === undefined) {
-        rejected(new Error('Informe o ID do carro a ser editado.'));
-        return;
-      }
-
-      // Se não tiver nada além do Id:
-      if (sqlParts.length === 1) {
-        rejected(new Error('Nenhum campo para atualizar.'));
-        return;
-      }
-
-      params.push(id);
-      let sql = `UPDATE cars SET ${sqlParts.join(', ')} WHERE id = ?`;
-
       db.query(
-        sql,
-        params,
+        `UPDATE cars SET model = ?, plate = ?, color = ? WHERE id = ?`,
+        [finalModel, finalPlate, finalColor, id],
         (error, results) => {
-          if (error) {
-            rejected(error);
-            return;
-          }
+          if (error) { rejected(error); return; }
           resolve(results);
         }
       )
