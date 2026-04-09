@@ -1,24 +1,26 @@
-# Sistema de Carros (back-end)
+# 🚗 API Gerenciamento de Carros (back-end)
 
 # Sobre
-Projeto de sistema de carros que permite as operações básicas.
+Projeto de sistema de gerenciamento de carros escrito em JavaScript que permite as operações básicas (CRUD) via cURL.
 
 ## Habilidades Demonstradas
 Ao navegar nestes dignissímos arquivos, confirmará que tenho domínio em:
-- <b>CRUD: </b>Create, Read, Update e Delete;
-- <b>Banco de Dados</b>;
-- <b>API RESTful</b>;
+
+- <b>CRUD</b>: fluxos de criação, leitura, atualização e deleção;
+- <b>Banco de Dados</b>: queries MySQL;
+- <b>API RESTful</b>: endpoints padronizados e organizados por recursos;
+- <b>Clean Code</b>: modularização de rotas e separação de responsabilidades;
+- <b>Tratamento de erros</b>.
+
 
 # Rodando o Projeto
-- Inicie o xampp/similar
-- Verifique se no arquivo vars.env o user/senha tá igual o que tu usa na tua máquina;
-- Rode os comandos do arquivo db-commands.txt;
-- Rode o comando `npm start`;
-- Rotas disponíveis estão no arquivo src/routes
+- Inicie o xampp/similar;
+- Verifique no arquivo vars.env se as credenciais (DB_USER/DB_PASSWORD) estão iguais às que tu usa na tua máquina;
+- Execute os comandos do arquivo db-commands.txt;
+- Execute o comando `npm start`;
 
-## Testes
 
-### Via cURL
+# Testes cURL
 
 Obter todos os carros:
 ```bash
@@ -46,11 +48,10 @@ curl -X DELETE http://localhost:3000/api/cars/2
 ```
 
 # Atualizações
-<i>Últimas atualizações: 31/03/2026</i>
+<i>Últimas atualizações: 09/04/2026</i>
 
-- Atualização README:
-  - Ínicio de Documentação;
-  - Lista de Afazeres;
+- Trabalhando no tratamento de erros;
+
 
 # Tem que fazer (entre hoje e a volta e Cristo)
 
@@ -66,4 +67,4 @@ curl -X DELETE http://localhost:3000/api/cars/2
 - [ ] Tomar um chá
 
 
-juro que amanhã refatoro ~.~
+₍^. .^₎⟆
